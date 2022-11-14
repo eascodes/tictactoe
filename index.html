@@ -10,13 +10,14 @@
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
-    <div class="player-container">
+    <div class="player-container visible">
         <label for="name1">Player One (X):</label>
         <input type="text" name="name1" id="name1" class="foo" required>
         <label for="name2">Player Two (O):</label>
         <input type="text" name="name2" id="name2" required>
-        <button id="start">Start the Game</button>
+        <button id="start" form="player-form">Start the Game</button>
     </div>
+    <div class="player-banner"></div>
     <div class="game-container">
         <div class="square"></div>
         <div class="square"></div>

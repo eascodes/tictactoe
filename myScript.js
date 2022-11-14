@@ -13,7 +13,17 @@ const startGame = (() => {
         let nameTwo = document.querySelector("#name2").value;
         let playerOne = playerFactory(nameOne,"X");
         let playerTwo = playerFactory(nameTwo,"O");
-        playGame(playerOne, playerTwo);
+        
+         if(nameOne != "" && nameTwo != "") {
+            playGame(playerOne, playerTwo);
+            let playerContainer = document.querySelector(".player-container");
+            let playerBanner = document.querySelector(".player-banner");
+            playerContainer.classList.add("hidden");
+            playerContainer.classList.remove("visible");
+            let playerText = document.createElement("h5");
+            playerText.textContent = playerOne.name + " vs. " + playerTwo.name;
+            playerBanner.appendChild(playerText);
+         } else {alert("Please add a name for each player.")}
     }
 
     let startButton = document.querySelector("#start");
@@ -107,13 +117,32 @@ function playGame(playerOne, playerTwo) {
             } 
         })();
 
+        const checkForTie = (() => {
+            if(squares.every(item => {
+                return item.textContent != "";
+            })) {
+                console.log("It's a tie!");
+            } 
+
+                
+        })();
+
+        // function removeAllListeners() {
+        //     for (let i=0; i < 9; i++) {
+        //         squares[i].;
+        //         squares[i].removeEventListener("click", addO);
+        //     }
+        // }
+
         function declareWinner(mark) {
             if (mark === playerOne.symbol) {
                 console.log(playerOne.name + " wins!");
+                // removeAllListeners();
             } else if (mark === playerTwo.symbol) {
                 console.log(playerTwo.name + " wins!");
+                // removeAllListeners();
             }
-        };
+        }
 
     }
 
@@ -126,8 +155,10 @@ const resetGame = (() => {
     function clearBoard() {
         for (let i=0; i < 9; i++) {
             squares[i].textContent = "";
+            // document.querySelector("#name1").value = "";
+            // document.querySelector("#name2").value = "";
         }
-        playGame;
+        startGame;
     }
     
     let reset = document.querySelector("#reset");
