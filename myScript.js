@@ -7,8 +7,10 @@ const playerFactory = (name, symbol) => {
 }
 
 const startGame = (() => {
-    function assignPlayers() {
 
+    function assignPlayers() {
+        let playerContainer = document.querySelector(".player-container");
+        let playerBanner = document.querySelector(".player-banner");
         let nameOne = document.querySelector("#name1").value;
         let nameTwo = document.querySelector("#name2").value;
         let playerOne = playerFactory(nameOne,"X");
@@ -16,18 +18,17 @@ const startGame = (() => {
         
          if(nameOne != "" && nameTwo != "") {
             playGame(playerOne, playerTwo);
-            let playerContainer = document.querySelector(".player-container");
-            let playerBanner = document.querySelector(".player-banner");
             playerContainer.classList.add("hidden");
             playerContainer.classList.remove("visible");
-            let playerText = document.createElement("h5");
+            let playerText = document.querySelector("#player-statement");
             playerText.textContent = playerOne.name + " vs. " + playerTwo.name;
-            playerBanner.appendChild(playerText);
          } else {alert("Please add a name for each player.")}
     }
 
     let startButton = document.querySelector("#start");
     startButton.addEventListener("click", assignPlayers);
+
+    return {assignPlayers: assignPlayers}
 
 })();
 
@@ -41,8 +42,8 @@ function playGame(playerOne, playerTwo) {
         }
         function addX() {
             for (let i=0; i < 9; i++) {
-                squares[i].removeEventListener("click", addX);
-            }
+                 squares[i].removeEventListener("click", addX);
+             }
             if (this.textContent === "") {
                 let targetSquare = this;
                 let x = document.createElement("p");
@@ -63,8 +64,8 @@ function playGame(playerOne, playerTwo) {
         }
         function addO() {
             for (let i=0; i < 9; i++) {
-                squares[i].removeEventListener("click", addO);
-            }
+                 squares[i].removeEventListener("click", addO);
+             }
             if (this.textContent === "") {
                 let targetSquare = this;
                 let o = document.createElement("p");
@@ -127,20 +128,13 @@ function playGame(playerOne, playerTwo) {
                 
         })();
 
-        // function removeAllListeners() {
-        //     for (let i=0; i < 9; i++) {
-        //         squares[i].;
-        //         squares[i].removeEventListener("click", addO);
-        //     }
-        // }
-
         function declareWinner(mark) {
             if (mark === playerOne.symbol) {
                 console.log(playerOne.name + " wins!");
-                // removeAllListeners();
+                resetGame.stopGame();
             } else if (mark === playerTwo.symbol) {
                 console.log(playerTwo.name + " wins!");
-                // removeAllListeners();
+                resetGame.stopGame();
             }
         }
 
@@ -151,16 +145,25 @@ function playGame(playerOne, playerTwo) {
 
 const resetGame = (() => {
     let squares = Array.from(document.querySelectorAll(".square")); //repeat variable
-
-    function clearBoard() {
-        for (let i=0; i < 9; i++) {
-            squares[i].textContent = "";
-            // document.querySelector("#name1").value = "";
-            // document.querySelector("#name2").value = "";
-        }
-        startGame;
-    }
     
+    function removeListeners() {
+        this.outerHTML = this.outerHTML;
+    }
+
+    function stopGame() {
+        for (let i=0; i < 9; i++) {
+            squares[i].addEventListener("click", removeListeners);
+        }
+    }
+
+    function refresh() {
+        window.location.reload();
+    }
+
     let reset = document.querySelector("#reset");
-    reset.addEventListener("click", clearBoard);
+    reset.addEventListener("click", refresh);
+
+    return { 
+        stopGame: stopGame
+    };
 })();
