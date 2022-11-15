@@ -10,7 +10,6 @@ const startGame = (() => {
 
     function assignPlayers() {
         let playerContainer = document.querySelector(".player-container");
-        let playerBanner = document.querySelector(".player-banner");
         let nameOne = document.querySelector("#name1").value;
         let nameTwo = document.querySelector("#name2").value;
         let playerOne = playerFactory(nameOne,"X");
@@ -124,17 +123,26 @@ function playGame(playerOne, playerTwo) {
             })) {
                 console.log("It's a tie!");
             } 
+        }
 
-                
-        })();
+          
+        )();
 
         function declareWinner(mark) {
-            if (mark === playerOne.symbol) {
-                console.log(playerOne.name + " wins!");
-                resetGame.stopGame();
-            } else if (mark === playerTwo.symbol) {
-                console.log(playerTwo.name + " wins!");
-                resetGame.stopGame();
+            let playerBanner = document.querySelector(".player-banner");
+            let winner = document.createElement("p");
+            if (playerBanner.children.length == 1) {
+                if (mark === playerOne.symbol) {
+                    console.log(playerOne.name + " wins!");
+                    winner.textContent = playerOne.name + " wins!";
+                    playerBanner.appendChild(winner);
+                    resetGame.stopGame();
+                } else if (mark === playerTwo.symbol) {
+                    console.log(playerTwo.name + " wins!");
+                    winner.textContent = playerTwo.name + " wins!";
+                    playerBanner.appendChild(winner);
+                    resetGame.stopGame();
+                }
             }
         }
 
