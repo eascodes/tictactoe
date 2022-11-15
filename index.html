@@ -6,15 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="myScript.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
     <title>Tic Tac Toe</title>
 </head>
 <body>
     <h1>Tic Tac Toe</h1>
     <div class="player-container visible">
-        <label for="name1">Player One (X):</label>
-        <input type="text" name="name1" id="name1" class="foo" required>
-        <label for="name2">Player Two (O):</label>
-        <input type="text" name="name2" id="name2" required>
+        <div class="player1">
+            <label for="name1"><span>X</span> Player One:</label>
+            <input type="text" name="name1" id="name1" class="foo" required>
+        </div>
+        <div class="player2">
+            <label for="name2"><span>O</span> Player Two:</label>
+            <input type="text" name="name2" id="name2" required>
+        </div>
         <button id="start" form="player-form">Start the Game</button>
     </div>
     <div class="player-banner">

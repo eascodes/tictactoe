@@ -1,3 +1,18 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url("background.png");
+    background-repeat: repeat;
+}
+
+h1 {
+    font-family: 'Permanent Marker', cursive;
+    color: #FF5964;
+    font-size: 3rem;
+}
+
 .game-container {
     display: grid;
     grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
@@ -6,7 +21,8 @@
 }
 
 .square {
-    border: black solid;
+    border: black solid 5px;
+    background-color: white;
     width: 100px;
     height: 100px;
 }
@@ -17,4 +33,41 @@
 
 .visible {
     display: block;
+}
+
+span {
+    font-family: 'Permanent Marker', cursive;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: white;
+    border: #FFE74C solid 10px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#start,
+#reset {
+    background-color: #35A7FF;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.game-container > div {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reset-container {
+    margin-top: 15px;
 }
