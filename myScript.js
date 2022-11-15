@@ -121,7 +121,7 @@ function playGame(playerOne, playerTwo) {
             if(squares.every(item => {
                 return item.textContent != "";
             })) {
-                console.log("It's a tie!");
+                declareWinner("tie");
             } 
         }
 
@@ -142,6 +142,10 @@ function playGame(playerOne, playerTwo) {
                     winner.textContent = playerTwo.name + " wins!";
                     playerBanner.appendChild(winner);
                     resetGame.stopGame();
+                } else if (mark === "tie") {
+                    console.log("It's a tie!");
+                    winner.textContent = "It's a tie!";
+                    playerBanner.appendChild(winner);
                 }
             }
         }
