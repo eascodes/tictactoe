@@ -1,9 +1,7 @@
 
 
 const playerFactory = (name, symbol) => {
-    const getName = () => name;
-    const getSymbol = () => symbol;
-    return {name, symbol, getName, getSymbol};
+    return {name, symbol};
 }
 
 const startGame = (() => {
@@ -47,8 +45,7 @@ function playGame(playerOne, playerTwo) {
                 let targetSquare = this;
                 let x = document.createElement("p");
                 x.textContent = "X";
-                targetMark = x;
-                targetSquare.appendChild(targetMark);
+                targetSquare.appendChild(x);
                 checkForWinner();
                 secondPlay();
             } else {
@@ -69,8 +66,7 @@ function playGame(playerOne, playerTwo) {
                 let targetSquare = this;
                 let o = document.createElement("p");
                 o.textContent = "O";
-                targetMark = o;
-                targetSquare.appendChild(targetMark);
+                targetSquare.appendChild(o);
                 checkForWinner();
                 firstPlay();
             } else {
@@ -133,17 +129,14 @@ function playGame(playerOne, playerTwo) {
             let winner = document.createElement("p");
             if (playerBanner.children.length == 1) {
                 if (mark === playerOne.symbol) {
-                    console.log(playerOne.name + " wins!");
                     winner.textContent = playerOne.name + " wins!";
                     playerBanner.appendChild(winner);
-                    resetGame.stopGame();
+                    resetGame.stopGame(squares);
                 } else if (mark === playerTwo.symbol) {
-                    console.log(playerTwo.name + " wins!");
                     winner.textContent = playerTwo.name + " wins!";
                     playerBanner.appendChild(winner);
-                    resetGame.stopGame();
+                    resetGame.stopGame(squares);
                 } else if (mark === "tie") {
-                    console.log("It's a tie!");
                     winner.textContent = "It's a tie!";
                     playerBanner.appendChild(winner);
                 }
@@ -156,13 +149,12 @@ function playGame(playerOne, playerTwo) {
     }
 
 const resetGame = (() => {
-    let squares = Array.from(document.querySelectorAll(".square")); //repeat variable
     
     function removeListeners() {
         this.outerHTML = this.outerHTML;
     }
 
-    function stopGame() {
+    function stopGame(squares) {
         for (let i=0; i < 9; i++) {
             squares[i].addEventListener("click", removeListeners);
         }
