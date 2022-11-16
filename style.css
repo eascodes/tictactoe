@@ -20,6 +20,8 @@ h1 {
     grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
     justify-content: center; 
     margin-top: 20px;
+    height: 300px;
+    width: 300px;
 }
 
 .square {
@@ -56,28 +58,34 @@ span {
     font-family: 'Permanent Marker', cursive;
 }
 
+.main-container {
+    background-color: #FFE74C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border-radius: 15px;
+}
+
 .player-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    background-color: #FFE74C;
     width: 300px;
-    border: #FFE74C solid 5px;
-    border-radius: 15px;
     padding: 10px;
 }
 
 #player-statement {
     font-family: 'Permanent Marker', cursive;
-    color: #6BF178;
+    color: #35A7FF;
     font-size: 4rem;
     margin: 0;
 }
 
 .winner-title {
     font-family: 'Permanent Marker', cursive;
-    color: #FFE74C;
+    color: #35A7FF;
     font-size: 4rem;
     margin: 0;
 }
@@ -85,16 +93,23 @@ span {
 #start,
 #reset {
     background-color: #35A7FF;
-    border: none;
     color: white;
-    padding: 10px;
+    border: none;
+    padding: 10px 0;
     text-align: center;
     text-decoration: none;
+    width: 120px;
+    border-radius: 5px;
 }
 
-#start:hover,
 #reset:hover {
     background-color: #6BF178;
+    color: black;
+    cursor: pointer;
+}
+
+#start:hover {
+    background-color: #FF5964;
     color: black;
     cursor: pointer;
 }
