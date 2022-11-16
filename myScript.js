@@ -32,6 +32,9 @@ const startGame = (() => {
 function playGame(playerOne, playerTwo) {
 
     let squares = Array.from(document.querySelectorAll(".square"));
+    for (let i=0; i < 9; i++) {
+        squares[i].classList.add("hover-effect");
+    }
 
     function firstPlay() {
         for (let i=0; i < 9; i++) {
@@ -127,18 +130,23 @@ function playGame(playerOne, playerTwo) {
         function declareWinner(mark) {
             let playerBanner = document.querySelector(".player-banner");
             let winner = document.createElement("p");
+            winner.classList.add("winner-title");
+            let playerText = document.querySelector("#player-statement");
             if (playerBanner.children.length == 1) {
                 if (mark === playerOne.symbol) {
                     winner.textContent = playerOne.name + " wins!";
                     playerBanner.appendChild(winner);
+                    playerText.textContent = "";
                     resetGame.stopGame(squares);
                 } else if (mark === playerTwo.symbol) {
                     winner.textContent = playerTwo.name + " wins!";
                     playerBanner.appendChild(winner);
+                    playerText.textContent = "";
                     resetGame.stopGame(squares);
                 } else if (mark === "tie") {
                     winner.textContent = "It's a tie!";
                     playerBanner.appendChild(winner);
+                    playerText.textContent = "";
                 }
             }
         }

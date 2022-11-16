@@ -1,4 +1,6 @@
 body {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,19 +18,34 @@ h1 {
 .game-container {
     display: grid;
     grid: 1fr 1fr 1fr / 1fr 1fr 1fr;
-    justify-content: center;
-    width: 300px;
+    justify-content: center; 
+    margin-top: 20px;
 }
 
 .square {
-    border: black solid 5px;
     background-color: white;
     width: 100px;
     height: 100px;
+    box-sizing: border-box;
+    border: black solid 2px;
+}
+
+.hover-effect:hover {
+    background: linear-gradient(#6BF178, #35A7FF);
+    cursor: pointer;
+}
+
+.square:nth-child(3n+1),
+.square:nth-child(3n+2) {
+    border-right: black solid 10px;
+}
+
+.square:nth-child(1n+4) {
+    border-top: black solid 10px;
 }
 
 .hidden {
-    visibility: hidden;
+    display: none !important;
 }
 
 .visible {
@@ -44,10 +61,25 @@ span {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    background-color: white;
-    border: #FFE74C solid 10px;
+    background-color: #FFE74C;
+    width: 300px;
+    border: #FFE74C solid 5px;
     border-radius: 15px;
     padding: 10px;
+}
+
+#player-statement {
+    font-family: 'Permanent Marker', cursive;
+    color: #6BF178;
+    font-size: 4rem;
+    margin: 0;
+}
+
+.winner-title {
+    font-family: 'Permanent Marker', cursive;
+    color: #FFE74C;
+    font-size: 4rem;
+    margin: 0;
 }
 
 #start,
@@ -58,6 +90,13 @@ span {
     padding: 10px;
     text-align: center;
     text-decoration: none;
+}
+
+#start:hover,
+#reset:hover {
+    background-color: #6BF178;
+    color: black;
+    cursor: pointer;
 }
 
 .game-container > div {
